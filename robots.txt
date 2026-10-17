@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://276hz.github.io/2010/sitemap.xml
