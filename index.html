@@ -153,17 +153,13 @@
   @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
   @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
   @keyframes envelopeEnter{0%{opacity:0;transform:translateY(28px) scale(.9) rotate(-2deg)}70%{opacity:1;transform:translateY(-4px) scale(1.015) rotate(.5deg)}100%{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
-  @keyframes cardReveal{0%{opacity:0;transform:translateY(24px) scale(.985)}65%{opacity:1}100%{opacity:1;transform:translateY(0) scale(1)}}
+  @keyframes cardReveal{0%{opacity:0;transform:translateY(24px) scale(.985);filter:blur(8px)}65%{opacity:1;filter:blur(0)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
   @keyframes fadeSlide{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
   @keyframes headingReveal{0%{opacity:0;transform:translateY(16px);letter-spacing:3px;filter:blur(5px)}100%{opacity:1;transform:translateY(0);letter-spacing:normal;filter:blur(0)}}
   @keyframes dateReveal{0%{opacity:0;transform:scale(.8);box-shadow:0 0 0 0 rgba(201,71,123,0)}65%{opacity:1;transform:scale(1.06);box-shadow:0 0 0 10px rgba(201,71,123,.06)}100%{opacity:1;transform:scale(1);box-shadow:0 0 0 0 rgba(201,71,123,0)}}
   @keyframes flowerBloom{0%{opacity:0;transform:scale(.55) rotate(-12deg);filter:blur(4px)}70%{opacity:1;transform:scale(1.1) rotate(3deg);filter:blur(0)}100%{opacity:1;transform:scale(1) rotate(0)}}
   @keyframes twinkle{0%{opacity:0;transform:scale(.3) rotate(-30deg)}25%{opacity:.9;transform:scale(1.25) rotate(15deg)}55%{opacity:.25;transform:scale(.8) rotate(35deg)}100%{opacity:.65;transform:scale(1) rotate(0)}}
   @keyframes confetti{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
-  @media(prefers-reduced-motion:reduce){
-    *,*:before,*:after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important;scroll-behavior:auto!important}
-    .orb,.petal,.confetti{display:none!important}
-  }
   @media(max-width:480px){
     body{padding:13px;padding-top:max(13px,env(safe-area-inset-top));padding-bottom:max(13px,env(safe-area-inset-bottom))}
     .topline{font-size:9px;letter-spacing:1.4px;margin-bottom:10px}
@@ -249,7 +245,7 @@
   const $ = id => document.getElementById(id);
   const intro = $("intro"), envelope = $("envelope"), page = document.querySelector(".page");
   const wishBtn = $("wishBtn"), extra = $("extra"), shareBtn = $("shareBtn"), toast = $("toast");
-  const bgm = $("bgm"), reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const bgm = $("bgm");
   let opened = false, revealed = false, openedAt = 0, revealTimer = null, petalTimer = null, toastTimer = null, musicStarted = false;
   page.setAttribute("inert","");
 
@@ -260,7 +256,7 @@
     toastTimer = setTimeout(()=>toast.classList.remove("show"),2600);
   }
   function makePetal(){
-    if(document.hidden||reduceMotion) return;
+    if(document.hidden) return;
     const symbols=["🌸","💗","🌷","✨","🌼","♡","✧"];
     const el=document.createElement("span");el.className="petal";
     el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
@@ -277,7 +273,6 @@
     petalTimer=setInterval(makePetal,720);
   }
   function confettiBurst(){
-    if(reduceMotion)return;
     const bits=["✦","♡","✿","✧","·"];
     for(let i=0;i<34;i++){
       const el=document.createElement("span");el.className="confetti";el.textContent=bits[i%bits.length];
@@ -305,7 +300,7 @@
     envelope.classList.add("open");
     intro.classList.add("opening");
     // Opening is intentionally cinematic: flap, letter lift, then the full card reveal.
-    revealTimer=setTimeout(reveal,reduceMotion?500:3800);
+    revealTimer=setTimeout(reveal,3800);
   }
   envelope.addEventListener("click",openCard);
   intro.addEventListener("click",e=>{if(e.target===intro)openCard()});
@@ -334,8 +329,6 @@
     }catch(e){showToast("Bạn có thể sao chép đường dẫn trên thanh địa chỉ để chia sẻ.");}
   }
   shareBtn.addEventListener("click",shareCard);
-
-  // Background music: starts on the first click/tap (browsers need a gesture), loops, no controls.
   function fadeInMusic(){
     let v=0;
     const t=setInterval(()=>{v=Math.min(.6,v+.03);bgm.volume=v;if(v>=.6)clearInterval(t)},120);
