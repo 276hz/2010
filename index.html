@@ -90,19 +90,19 @@
     line-height:1.7;
   }
   #extra.is-open{display:block}
+
   .petal{
     position:fixed;
-    top:-30px;
+    top:-40px;
     z-index:0;
     pointer-events:none;
-    animation:fall linear forwards;
+    will-change:transform;
+    animation-name:fall;
+    animation-timing-function:linear;
+    animation-fill-mode:forwards;
   }
   @keyframes fall{
-    to{transform:translateY(110vh) rotate(540deg);opacity:.2}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .petal{display:none}
-    *{animation-duration:.01ms!important;transition:none!important}
+    to{transform:translateY(110vh) rotate(540deg);opacity:.15}
   }
 </style>
 </head>
@@ -131,6 +131,7 @@
 (function () {
   "use strict";
 
+  /* ---------- Nút nhận lời chúc ---------- */
   var btn = document.getElementById("wishBtn");
   var extra = document.getElementById("extra");
 
@@ -142,25 +143,25 @@
       : "💌 Nhấn để nhận lời chúc";
   });
 
+  /* ---------- Hoa/emoji rơi — LUÔN CHẠY ---------- */
   var symbols = ["🌸", "💗", "🌷", "✨"];
-  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function petal() {
     var el = document.createElement("div");
     el.className = "petal";
     el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    el.style.left = Math.random() * 100 + "vw";
-    el.style.animationDuration = (5 + Math.random() * 6) + "s";
+    el.style.left = (Math.random() * 100) + "vw";
     el.style.fontSize = (14 + Math.random() * 18) + "px";
+    el.style.animationDuration = (5 + Math.random() * 6) + "s";
     document.body.appendChild(el);
     setTimeout(function () { el.remove(); }, 12000);
   }
 
-  if (!reduced) {
-    setInterval(function () {
-      if (!document.hidden) petal();
-    }, 650);
-  }
+  // Tạo ngay vài cái để không phải chờ 650ms mới thấy cái đầu tiên
+  for (var i = 0; i < 5; i++) petal();
+
+  // Rơi liên tục, kể cả khi tab bị ẩn (giữ nguyên như bản gốc)
+  setInterval(petal, 650);
 })();
 </script>
 </body>
