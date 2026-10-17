@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#fff0f6">
-<meta name="description" content="Một tấm thiệp 20/10 nhỏ xinh, gửi những lời chúc dịu dàng đến những người phụ nữ tuyệt vời.">
-<meta property="og:title" content="Một lời chúc dịu dàng · 20/10">
-<meta property="og:description" content="Mở thiệp để nhận những lời chúc yêu thương nhân ngày Phụ nữ Việt Nam 20/10.">
+<meta name="description" content="Một tấm thiệp 20/10, gửi cậu những lời chúc ">
+<meta property="og:title" content="it's 20/10">
+<meta property="og:description" content="lời chúc yêu thương nhân ngày Phụ nữ Việt Nam 20/10.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="vi_VN">
 <meta property="og:url" content="https://276hz.github.io/2010/">
@@ -22,7 +22,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <noscript><style>.envelope-wrap{display:none}.page:not(.revealed) .card,.page:not(.revealed) .topline,.page:not(.revealed) .footer,.page:not(.revealed) .share-wrap{opacity:1;transform:none}</style></noscript>
-<title>Một lời chúc dịu dàng · 20/10</title>
+<title>20/10 with love❤️</title>
 <style>
   :root{
     color-scheme:light;
@@ -187,9 +187,9 @@
   <button class="envelope" id="envelope" type="button" aria-label="Mở phong bì và xem thiệp">
     <div class="env-back"></div>
     <div class="env-paper">
-      <div class="tiny">GỬI BẠN, VỚI YÊU THƯƠNG</div>
-      <div class="env-title">Happy 20·10</div>
-      <div class="env-sub">Một lời chúc nhỏ, thật nhiều yêu thương</div>
+      <div class="tiny">gửi cậu</div>
+      <div class="env-title">happyy 20·10</div>
+      <div class="env-sub">❤️❤️❤️</div>
     </div>
     <div class="env-flap"></div><div class="env-front"></div>
     <div class="seal">♡</div>
@@ -198,7 +198,7 @@
 </div>
 
 <main class="page">
-  <div class="topline"><span>✦ Một chút dịu dàng gửi đến bạn</span><span class="sparkle">♡ 20 · 10</span></div>
+  <div class="topline"><span>✦ Một chút dịu dàng gửi đến cậu</span><span class="sparkle">♡ 20 · 10</span></div>
   <article class="card" id="card">
     <span class="corner tl" aria-hidden="true">❀</span><span class="corner tr" aria-hidden="true">✧</span>
     <span class="corner bl" aria-hidden="true">✧</span><span class="corner br" aria-hidden="true">❀</span>
@@ -210,7 +210,7 @@
     <p class="message" id="mainMessage">
       Nhân ngày 20/10, xin gửi đến những người phụ nữ tuyệt vời lời chúc luôn
       <strong>xinh tươi, mạnh khỏe, hạnh phúc</strong>, gặp thật nhiều may mắn và luôn được yêu thương.
-      Mong mỗi ngày của bạn đều ngập tràn niềm vui, nụ cười và những điều dịu dàng nhất! 💗
+      Mong mỗi ngày của cậu đều ngập tràn niềm vui, nụ cười và những điều dịu dàng nhất! 💗
     </p>
 
 
@@ -222,7 +222,7 @@
       <div class="extra-inner">
         <div class="extra-content" id="extraContent" aria-live="polite">
           <div class="mini-flower" aria-hidden="true">🌹 ✨ 🌹</div>
-          Chúc bạn luôn rạng rỡ như hoa, vững vàng theo đuổi ước mơ và luôn có những người chân thành ở bên.
+          Chúc cậu luôn rạng rỡ như hoa, vững vàng theo đuổi ước mơ và luôn có những người chân thành ở bên.
           Cảm ơn vì đã làm thế giới này trở nên ấm áp hơn!
         </div>
       </div>
@@ -232,7 +232,7 @@
     <div class="hearts" aria-hidden="true">💗 💐 💗</div>
   </article>
 
-  <div class="footer"><span>made by herious❤️</span><span class="dot">•</span><span>Chúc bạn một ngày 20/10 thật đẹp</span></div>
+  <div class="footer"><span>made by herious❤️</span><span class="dot">•</span><span>Chúc cậu một ngày 20/10 thật đẹp</span></div>
   <div class="share-wrap"><button class="toolbtn" id="shareBtn" type="button">Chia sẻ</button></div>
 </main>
 
@@ -295,12 +295,11 @@
     setTimeout(()=>intro.setAttribute("aria-hidden","true"),1200);
   }
   function openCard(){
-    if(opened){if(Date.now()-openedAt>1000)reveal();return}   // tap again to skip the animation
+    if(opened){if(Date.now()-openedAt>1000)reveal();return}   
     opened=true;openedAt=Date.now();
     envelope.classList.add("open");
     intro.classList.add("opening");
-    // Opening is intentionally cinematic: flap, letter lift, then the full card reveal.
-    revealTimer=setTimeout(reveal,3800);
+    revealTimer=setTimeout(reveal,4131);
   }
   envelope.addEventListener("click",openCard);
   intro.addEventListener("click",e=>{if(e.target===intro)openCard()});
@@ -310,7 +309,7 @@
     const isOpen=extra.classList.toggle("is-open");
     wishBtn.setAttribute("aria-expanded",String(isOpen));
     extra.setAttribute("aria-hidden",String(!isOpen));
-    wishBtn.textContent=isOpen?"💗 Thu lại lời chúc":"💌 Nhận lời chúc";
+    wishBtn.textContent=isOpen?"💗 Thu lại":"💌 Nhận quà";
     if(isOpen)confettiBurst();
   });
 
@@ -326,7 +325,7 @@
       ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();
       const ok=document.execCommand("copy");ta.remove();
       showToast(ok?"Đã sao chép liên kết thiệp 💌":"Hãy sao chép đường dẫn trên thanh địa chỉ để chia sẻ.");
-    }catch(e){showToast("Bạn có thể sao chép đường dẫn trên thanh địa chỉ để chia sẻ.");}
+    }catch(e){showToast("Cậu có thể sao chép đường dẫn trên thanh địa chỉ để chia sẻ.");}
   }
   shareBtn.addEventListener("click",shareCard);
   function fadeInMusic(){
@@ -337,7 +336,7 @@
     if(!bgm.paused||document.hidden)return;
     if(!musicStarted)bgm.volume=0;
     const p=bgm.play();
-    if(p&&p.then)p.then(()=>{if(!musicStarted){musicStarted=true;fadeInMusic()}}).catch(()=>{});   // if blocked, the next click retries
+    if(p&&p.then)p.then(()=>{if(!musicStarted){musicStarted=true;fadeInMusic()}}).catch(()=>{});   
   }
   document.addEventListener("click",kickMusic,true);
   document.addEventListener("visibilitychange",()=>{if(document.hidden)bgm.pause();else if(musicStarted)kickMusic()});
