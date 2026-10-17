@@ -6,6 +6,7 @@
 <title>Chúc mừng ngày Phụ nữ Việt Nam 20/10</title>
 <style>
   *{box-sizing:border-box}
+  html{overflow-x:hidden}
   body{
     margin:0;
     min-height:100vh;
@@ -16,11 +17,10 @@
     font-family:Georgia,"Times New Roman",serif;
     color:#6f2145;
     background:radial-gradient(circle at top,#fff8fb 0,#ffe3ee 42%,#f7b8d0 100%);
-    overflow-x:hidden;
   }
   .card{
     position:relative;
-    z-index:3;
+    z-index:1;
     max-width:720px;
     width:100%;
     padding:clamp(28px,6vw,58px) clamp(22px,6vw,60px);
@@ -91,18 +91,8 @@
   }
   #extra.is-open{display:block}
 
-  .petal{
-    position:fixed;
-    top:-40px;
-    z-index:0;
-    pointer-events:none;
-    will-change:transform;
-    animation-name:fall;
-    animation-timing-function:linear;
-    animation-fill-mode:forwards;
-  }
   @keyframes fall{
-    to{transform:translateY(110vh) rotate(540deg);opacity:.15}
+    to{transform:translateY(115vh) rotate(540deg);opacity:.25}
   }
 </style>
 </head>
@@ -130,8 +120,6 @@
 <script>
 (function () {
   "use strict";
-
-  /* ---------- Nút nhận lời chúc ---------- */
   var btn = document.getElementById("wishBtn");
   var extra = document.getElementById("extra");
 
@@ -142,25 +130,24 @@
       ? "💗 Thu lại lời chúc"
       : "💌 Nhấn để nhận lời chúc";
   });
-
-  /* ---------- Hoa/emoji rơi — LUÔN CHẠY ---------- */
   var symbols = ["🌸", "💗", "🌷", "✨"];
 
   function petal() {
     var el = document.createElement("div");
-    el.className = "petal";
     el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    el.style.position = "fixed";
+    el.style.top = "-40px";
     el.style.left = (Math.random() * 100) + "vw";
-    el.style.fontSize = (14 + Math.random() * 18) + "px";
-    el.style.animationDuration = (5 + Math.random() * 6) + "s";
+    el.style.fontSize = (14 + Math.random() * 20) + "px";
+    el.style.pointerEvents = "none";
+    el.style.userSelect = "none";
+    el.style.zIndex = "9999";  // ← TRÊN thiệp, không bị che
+    el.style.animation = "fall " + (5 + Math.random() * 6) + "s linear forwards";
+
     document.body.appendChild(el);
-    setTimeout(function () { el.remove(); }, 12000);
+    setTimeout(function () { el.remove(); }, 13000);
   }
-
-  // Tạo ngay vài cái để không phải chờ 650ms mới thấy cái đầu tiên
   for (var i = 0; i < 5; i++) petal();
-
-  // Rơi liên tục, kể cả khi tab bị ẩn (giữ nguyên như bản gốc)
   setInterval(petal, 650);
 })();
 </script>
