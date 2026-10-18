@@ -10,10 +10,10 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="vi_VN">
 <meta property="og:url" content="https://276hz.github.io/2010/">
-<meta property="og:image" content="https://276hz.github.io/2010/og-image.jpg">
+<meta property="og:image" content="https://276hz.github.io/2010/og-cat.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Thiệp chúc mừng Ngày Phụ nữ Việt Nam 20/10">
+<meta property="og:image:alt" content="Mèo cute chúc mừng Ngày Phụ nữ Việt Nam 20/10">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://276hz.github.io/2010/">
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -177,6 +177,22 @@
     .intro-copy{top:calc(50% + 145px)}
   }
   .it{font-style:italic;text-transform:none}
+/*catcss*/
+.catbox{margin:2px auto 12px;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent;outline:none}
+.catwrap{animation:catPop .55s cubic-bezier(.2,1.4,.4,1) both}
+.catbox svg{display:block;width:min(210px,60vw);height:auto;margin:0 auto;filter:drop-shadow(0 8px 12px rgba(140,40,90,.25));animation:catBob 3.4s ease-in-out infinite}
+.catbox img{display:block;width:min(240px,70vw);margin:0 auto;border-radius:18px;border:4px solid #fff;box-shadow:0 8px 18px rgba(140,40,90,.22)}
+.catcap{margin:4px auto 0;max-width:290px;font:800 19px/1.25 Arial,sans-serif;color:#fff;text-shadow:-2px -2px 0 #a8285f,2px -2px 0 #a8285f,-2px 2px 0 #a8285f,2px 2px 0 #a8285f,0 3px 0 #a8285f}
+.cathint{margin-top:10px;font:600 11px/1.4 Arial,sans-serif;color:#b0668a;letter-spacing:.3px}
+.catbl{transform-box:fill-box;transform-origin:center;animation:catblink 4.4s infinite}
+.peek{position:absolute;z-index:7;left:50%;bottom:calc(100% - 26px);width:132px;margin-left:-66px;pointer-events:none;transition:transform .55s ease,opacity .45s ease;animation:peekIn 1s .9s backwards}
+.peek svg{display:block;width:100%;height:auto}
+.envelope.open .peek{transform:translateY(34px) scale(.85);opacity:0}
+@keyframes catBob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-6px) rotate(2deg)}}
+@keyframes catPop{0%{transform:scale(.4) rotate(-12deg);opacity:0}100%{transform:none;opacity:1}}
+@keyframes catblink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+@keyframes peekIn{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+/*endcatcss*/
 </style>
 </head>
 <body>
@@ -185,7 +201,7 @@
 </div>
 
 <div class="envelope-wrap" id="intro" role="dialog" aria-modal="true" aria-label="Mở thiệp chúc mừng 20 tháng 10">
-  <button class="envelope" id="envelope" type="button" aria-label="Mở phong bì và xem thiệp">
+  <button class="envelope" id="envelope" type="button" aria-label="Mở phong bì và xem thiệp"><span class="peek" id="peek" aria-hidden="true"></span>
     <div class="env-back"></div>
     <div class="env-paper">
       <div class="tiny">gửi cậu</div>
@@ -220,6 +236,7 @@ Chúc cậu luôn <strong>xinh tươi, mạnh khỏe, hạnh phúc</strong>, g�
       <div class="extra-inner">
         <div class="extra-content" id="extraContent" aria-live="polite">
           <div class="mini-flower" aria-hidden="true">🌹 ✨ 🌹</div>
+          <div class="catbox" id="catbox" role="button" tabindex="-1" aria-live="off"></div>
           Chúc cho những cô gái của trường Cẩm luôn tự tin tỏa sáng, sống hết mình với tuổi trẻ và có thật nhiều kỷ niệm đẹp dưới mái trường thân yêu. Mong mọi điều tốt lành sẽ luôn tìm đến cậu, không chỉ trong ngày 20/10 mà còn trong tất cả những ngày sau này. 🫶🏻
 Happy Vietnamese Women’s Day! Chúc một nửa xinh đẹp của trường Cẩm có một ngày 20/10 thật trọn vẹn và đáng nhớ nhé! 💐💕
         </div>
@@ -255,7 +272,7 @@ Happy Vietnamese Women’s Day! Chúc một nửa xinh đẹp của trường C�
   }
   function makePetal(){
     if(document.hidden) return;
-    const symbols=["🌸","💗","🌷","✨","🌼","♡","✧"];
+    const symbols=["🌸","💗","🌷","✨","🌼","♡","✧","🐾","🐱"];
     const el=document.createElement("span");el.className="petal";
     el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
     el.style.left=Math.random()*100+"vw";
@@ -303,12 +320,64 @@ Happy Vietnamese Women’s Day! Chúc một nửa xinh đẹp của trường C�
   intro.addEventListener("click",e=>{if(e.target===intro)openCard()});
   document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!opened)openCard()});
 
+  /*cats*/
+const CATS=[
+{fur:"#ffb25b",eyes:"spark",mouth:"smile",x:"flower",cap:"tặng cậu bông hoa nè 🥹🌷"},
+{fur:"#cfd4e2",eyes:"shades",mouth:"smug",x:"star",cap:"20/10 slay cả ngày nha 😎"},
+{fur:"#ffe3bd",eyes:"shock",mouth:"open",x:"",cap:"ủa xinh dữ vậy hả trời 😳"},
+{fur:"#fffaf5",eyes:"cry",mouth:"open",x:"heart",cap:"xinh quá tớ khóc luôn 😭"},
+{fur:"#4b4556",eyes:"glow",mouth:"smug",x:"star",dark:1,cap:"chúc cậu hết deadline, toàn nhận quà 🫶"},
+{fur:"#ffc98a",eyes:"happy",mouth:"w",x:"bow",cap:"iu cậu nhiều lắm luôn á 🩷"}
+];
+const PEEK={fur:"#ffb25b",eyes:"spark",mouth:"w",x:"bow",cap:"mèo thò đầu chào cậu"};
+function catSvg(o){
+  const D="#2d2030",ink=o.dark?"#ffe9f2":D,F=o.fur,ST="M0-14Q2-2 14 0 2 2 0 14-2 2-14 0-2-2 0-14z";
+  const ears="M44 74 38 22l50 28zM156 74l6-52-50 28z";
+  const paws='<ellipse cx="70" cy="152" rx="19" ry="14"/><ellipse cx="130" cy="152" rx="19" ry="14"/>';
+  const E={
+    spark:`<g class="catbl"><circle cx="72" cy="92" r="13" fill="${D}"/><circle cx="128" cy="92" r="13" fill="${D}"/><circle cx="67" cy="86" r="5" fill="#fff"/><circle cx="76" cy="97" r="2.6" fill="#fff"/><circle cx="123" cy="86" r="5" fill="#fff"/><circle cx="132" cy="97" r="2.6" fill="#fff"/></g>`,
+    shades:`<rect x="48" y="78" width="48" height="26" rx="12" fill="${D}"/><rect x="104" y="78" width="48" height="26" rx="12" fill="${D}"/><path d="M96 90h8" stroke="${D}" stroke-width="4"/><path d="M56 85l9-3m47 3 9-3" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/>`,
+    shock:`<g class="catbl"><circle cx="72" cy="92" r="15" fill="#fff" stroke="${D}" stroke-width="3"/><circle cx="128" cy="92" r="15" fill="#fff" stroke="${D}" stroke-width="3"/><circle cx="72" cy="92" r="3.5" fill="${D}"/><circle cx="128" cy="92" r="3.5" fill="${D}"/></g>`,
+    cry:`<path d="M60 94q12-14 24 0M116 94q12-14 24 0" fill="none" stroke="${D}" stroke-width="4.5" stroke-linecap="round"/><path d="M68 98q-9 16-3 32 9-14 3-32zM132 98q9 16 3 32-9-14-3-32z" fill="#7fd0ff" stroke="#fff" stroke-width="1.5"/>`,
+    glow:`<g class="catbl"><circle cx="72" cy="92" r="13" fill="#ffe066"/><circle cx="128" cy="92" r="13" fill="#ffe066"/><ellipse cx="72" cy="92" rx="4" ry="10" fill="#1d1722"/><ellipse cx="128" cy="92" rx="4" ry="10" fill="#1d1722"/><circle cx="67" cy="86" r="3" fill="#fff"/><circle cx="123" cy="86" r="3" fill="#fff"/></g>`,
+    happy:`<path d="M60 96q12-17 24 0M116 96q12-17 24 0" fill="none" stroke="${D}" stroke-width="5" stroke-linecap="round"/>`
+  };
+  const M={
+    w:`<path d="M100 108q-8 10-16 2M100 108q8 10 16 2" fill="none" stroke="${ink}" stroke-width="3" stroke-linecap="round"/>`,
+    smile:`<path d="M86 110q14 14 28 0" fill="none" stroke="${ink}" stroke-width="3.5" stroke-linecap="round"/>`,
+    smug:`<path d="M88 112q10 6 22-4" fill="none" stroke="${ink}" stroke-width="3.5" stroke-linecap="round"/>`,
+    open:`<ellipse cx="100" cy="122" rx="10" ry="12" fill="#7a2e45"/><ellipse cx="100" cy="129" rx="6" ry="5" fill="#ff8fa8"/>`
+  };
+  const X={
+    flower:`<g transform="translate(100 150)"><path d="M0 8v14" stroke="#3aa56b" stroke-width="5" stroke-linecap="round"/><g fill="#ff6fa5" stroke="${D}" stroke-width="2"><circle cy="-11" r="9"/><circle cx="10.5" cy="-3.4" r="9"/><circle cx="6.5" cy="8.9" r="9"/><circle cx="-6.5" cy="8.9" r="9"/><circle cx="-10.5" cy="-3.4" r="9"/></g><circle r="6" fill="#ffd166" stroke="${D}" stroke-width="2"/></g>`,
+    star:`<g fill="#ffd166" stroke="${D}" stroke-width="2" stroke-linejoin="round"><path transform="translate(172 38)" d="${ST}"/><path transform="translate(28 58) scale(.7)" d="${ST}"/></g>`,
+    heart:`<path transform="translate(174 58)" d="M0 16C-26-2-12-24 0-9 12-24 26-2 0 16z" fill="#ff5c8a" stroke="${D}" stroke-width="2.5" stroke-linejoin="round"/>`,
+    bow:`<g transform="translate(138 48)" fill="#ff6fa5" stroke="${D}" stroke-width="2.5" stroke-linejoin="round"><path d="M0 0-17-11v22zM0 0l17-11v22z"/><circle r="5.5" fill="#ff9cc2"/></g>`
+  };
+  return `<svg viewBox="0 0 200 180" role="img" aria-label="${o.cap}">`+
+    `<g fill="#fff" stroke="#fff" stroke-width="22" stroke-linejoin="round"><path d="${ears}"/><ellipse cx="100" cy="94" rx="70" ry="58"/>${paws}</g>`+
+    `<g fill="${F}" stroke="${D}" stroke-width="3.5" stroke-linejoin="round"><path d="${ears}"/><path d="M48 58 45 33l23 14zM152 58l3-25-23 14z" fill="#ff9db8" stroke="none"/><ellipse cx="100" cy="94" rx="70" ry="58"/></g>`+
+    `<ellipse cx="52" cy="108" rx="11" ry="7" fill="#ff7fa8" opacity=".5"/><ellipse cx="148" cy="108" rx="11" ry="7" fill="#ff7fa8" opacity=".5"/>`+
+    `<path d="M34 100l-22-5M34 108l-24 5M166 100l22-5M166 108l24 5" stroke="${D}" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>`+
+    E[o.eyes]+`<path d="M93 101h14l-7 8z" fill="#ff8fa8" stroke="${D}" stroke-width="2" stroke-linejoin="round"/>`+M[o.mouth]+
+    `<g fill="${F}" stroke="${D}" stroke-width="3.5">${paws}</g>`+(X[o.x]||"")+`</svg>`;
+}
+/*endcats*/
+  const catbox=$("catbox");let ci=0;
+  function showCat(n){
+    ci=(n+CATS.length)%CATS.length;const o=CATS[ci];
+    catbox.innerHTML='<div class="catwrap">'+(o.src?'<img src="'+o.src+'" alt="'+o.cap+'" loading="lazy">':catSvg(o))+'<div class="catcap">'+o.cap+'</div></div><div class="cathint">chạm vào mèo để xem con khác 🐾</div>';
+  }
+  catbox.addEventListener("click",()=>showCat(ci+1));
+  catbox.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();showCat(ci+1)}});
+  $("peek").innerHTML=catSvg(PEEK);
   wishBtn.addEventListener("click",()=>{
     const isOpen=extra.classList.toggle("is-open");
     wishBtn.setAttribute("aria-expanded",String(isOpen));
     extra.setAttribute("aria-hidden",String(!isOpen));
     wishBtn.textContent=isOpen?"💗 Thu lại":"💌 Nhận quà";
-    if(isOpen)confettiBurst();
+    catbox.tabIndex=isOpen?0:-1;
+    if(isOpen){showCat(ci);confettiBurst();}
   });
 
   async function shareCard(){
@@ -316,7 +385,7 @@ Happy Vietnamese Women’s Day! Chúc một nửa xinh đẹp của trường C�
     const url=link&&link.href?link.href:window.location.href;
     const shareData={title:document.title,text:"Mình gửi bạn một tấm thiệp nhỏ cùng lời chúc thật dịu dàng nhân ngày Phụ nữ Việt Nam 20/10 💗",url};
     try{if(navigator.share){await navigator.share(shareData);return;}}
-    catch(err){if(err&&err.name==="AbortError")return;}  
+    catch(err){if(err&&err.name==="AbortError")return;}   // blocked or unsupported: fall back to copying the link
     try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(url);showToast("Đã sao chép liên kết thiệp 💌");return;}}catch(e){}
     try{
       const ta=document.createElement("textarea");ta.value=url;ta.setAttribute("readonly","");
