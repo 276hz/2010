@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#fff0f6">
 <meta name="description" content="Một tấm thiệp 20/10, gửi cậu những lời chúc yêu thương nhân ngày Phụ nữ Việt Nam.">
-<meta property="og:title" content="it's 20/10">
+<meta property="og:title" content="20/10 with love❤️">
 <meta property="og:description" content="lời chúc yêu thương nhân ngày Phụ nữ Việt Nam 20/10.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="vi_VN">
@@ -21,7 +21,6 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<noscript><style>.envelope-wrap{display:none}.page:not(.revealed) .card,.page:not(.revealed) .topline,.page:not(.revealed) .footer,.page:not(.revealed) .share-wrap{opacity:1;transform:none}</style></noscript>
 <title>20/10 with love❤️</title>
 <style>
   :root{
@@ -93,6 +92,7 @@
   .page.revealed .footer,.page.revealed .share-wrap{animation:fadeSlide 1s 2s both}
   .card:after{content:"✧";position:absolute;top:12%;right:12%;font-size:24px;color:#e5b4c8;opacity:0;pointer-events:none}
   .page.revealed .card:after{animation:twinkle 2.8s 1.7s ease-in-out both}
+  #card:focus{outline:none}
   .corner{position:absolute;color:#d88bab;font-size:22px;opacity:.8}
   .corner.tl{top:20px;left:22px}.corner.tr{top:20px;right:22px}
   .corner.bl{bottom:20px;left:22px}.corner.br{bottom:20px;right:22px}
@@ -123,10 +123,10 @@
   .extra-content .mini-flower{font-size:25px;margin-bottom:7px}
   .signature{font-style:italic;font-size:clamp(17px,3vw,21px);color:#b33d70;margin-top:25px}
   .hearts{font-size:21px;letter-spacing:7px;margin-top:17px}
-  .footer{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:18px auto 0;color:#a05276;font:11px/1.5 Arial,sans-serif;letter-spacing:.4px}
+  .footer{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:18px auto 0;color:var(--rose-deep);font:11px/1.5 Arial,sans-serif;letter-spacing:.4px}
   .footer .dot{opacity:.5}
   .share-wrap{display:flex;justify-content:center;margin:28px auto 0}
-  .toolbtn{border:1px solid rgba(255,255,255,.92);border-radius:999px;padding:13px 22px;background:rgba(255,255,255,.72);color:#88405f;font:700 13px Arial,sans-serif;cursor:pointer;display:inline-flex;gap:9px;align-items:center;backdrop-filter:blur(8px);box-shadow:0 8px 24px rgba(115,34,72,.08);transition:transform .25s,background .25s,box-shadow .25s}
+  .toolbtn{border:1px solid rgba(255,255,255,.92);border-radius:999px;padding:13px 22px;background:rgba(255,255,255,.72);color:#88405f;font:700 13px Arial,sans-serif;cursor:pointer;display:inline-flex;gap:9px;align-items:center;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 8px 24px rgba(115,34,72,.08);transition:transform .25s,background .25s,box-shadow .25s}
   .toolbtn:hover{background:#fff;transform:translateY(-2px);box-shadow:0 12px 28px rgba(115,34,72,.13)}
   .envelope-wrap{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:20px;background:rgba(99,28,61,.46);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);transition:opacity 1.15s ease,visibility 1.15s ease}
   .envelope-wrap.dismissed{opacity:0;visibility:hidden;pointer-events:none}
@@ -151,11 +151,10 @@
   .music-note{display:inline-block}
   @keyframes fall{0%{transform:translate3d(0,-5vh,0) rotate(0deg);opacity:0}8%{opacity:.95}100%{transform:translate3d(var(--drift,40px),110vh,0) rotate(var(--spin,540deg));opacity:.15}}
   @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
-  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
   @keyframes envelopeEnter{0%{opacity:0;transform:translateY(28px) scale(.9) rotate(-2deg)}70%{opacity:1;transform:translateY(-4px) scale(1.015) rotate(.5deg)}100%{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
   @keyframes cardReveal{0%{opacity:0;transform:translateY(24px) scale(.985);filter:blur(8px)}65%{opacity:1;filter:blur(0)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
   @keyframes fadeSlide{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
-  @keyframes headingReveal{0%{opacity:0;transform:translateY(16px);letter-spacing:3px;filter:blur(5px)}100%{opacity:1;transform:translateY(0);letter-spacing:normal;filter:blur(0)}}
+  @keyframes headingReveal{0%{opacity:0;transform:translateY(16px);letter-spacing:3px;filter:blur(5px)}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
   @keyframes dateReveal{0%{opacity:0;transform:scale(.8);box-shadow:0 0 0 0 rgba(201,71,123,0)}65%{opacity:1;transform:scale(1.06);box-shadow:0 0 0 10px rgba(201,71,123,.06)}100%{opacity:1;transform:scale(1);box-shadow:0 0 0 0 rgba(201,71,123,0)}}
   @keyframes flowerBloom{0%{opacity:0;transform:scale(.55) rotate(-12deg);filter:blur(4px)}70%{opacity:1;transform:scale(1.1) rotate(3deg);filter:blur(0)}100%{opacity:1;transform:scale(1) rotate(0)}}
   @keyframes twinkle{0%{opacity:0;transform:scale(.3) rotate(-30deg)}25%{opacity:.9;transform:scale(1.25) rotate(15deg)}55%{opacity:.25;transform:scale(.8) rotate(35deg)}100%{opacity:.65;transform:scale(1) rotate(0)}}
@@ -176,14 +175,17 @@
     .signature{margin-top:22px}
     .intro-copy{top:calc(50% + 145px)}
   }
+  @media(max-height:426px){.envelope,.intro-copy{zoom:.86}}
+  @media(max-height:369px){.envelope,.intro-copy{zoom:.76}}
+  @media(max-height:328px){.envelope,.intro-copy{zoom:.66}}
   .it{font-style:italic;text-transform:none}
 /*catcss*/
 .catbox{margin:2px auto 12px;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent;outline:none}
+.catbox:focus-visible{outline:3px solid #d76b9a;outline-offset:4px;border-radius:18px}
 .catwrap{animation:catPop .55s cubic-bezier(.2,1.4,.4,1) both}
 .catbox svg{display:block;width:min(210px,60vw);height:auto;margin:0 auto;filter:drop-shadow(0 8px 12px rgba(140,40,90,.25));animation:catBob 3.4s ease-in-out infinite}
-.catbox img{display:block;width:min(240px,70vw);margin:0 auto;border-radius:18px;border:4px solid #fff;box-shadow:0 8px 18px rgba(140,40,90,.22)}
 .catcap{margin:4px auto 0;max-width:290px;font:800 19px/1.25 Arial,sans-serif;color:#fff;text-shadow:-2px -2px 0 #a8285f,2px -2px 0 #a8285f,-2px 2px 0 #a8285f,2px 2px 0 #a8285f,0 3px 0 #a8285f}
-.cathint{margin-top:10px;font:600 11px/1.4 Arial,sans-serif;color:#b0668a;letter-spacing:.3px}
+.cathint{margin-top:10px;font:600 11px/1.4 Arial,sans-serif;color:#9a4f74;letter-spacing:.3px}
 .catbl{transform-box:fill-box;transform-origin:center;animation:catblink 4.4s infinite}
 .peek{position:absolute;z-index:7;left:50%;bottom:calc(100% - 26px);width:132px;margin-left:-66px;pointer-events:none;transition:transform .55s ease,opacity .45s ease;animation:peekIn 1s .9s backwards}
 .peek svg{display:block;width:100%;height:auto}
@@ -194,6 +196,7 @@
 @keyframes peekIn{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
 /*endcatcss*/
 </style>
+<noscript><style>.envelope-wrap{display:none}.page:not(.revealed) .card,.page:not(.revealed) .topline,.page:not(.revealed) .footer,.page:not(.revealed) .share-wrap{opacity:1;transform:none}.btn-row,.share-wrap{display:none}#extra{grid-template-rows:1fr;opacity:1;margin-top:20px}</style></noscript>
 </head>
 <body>
 <div class="ambient" aria-hidden="true">
@@ -202,21 +205,21 @@
 
 <div class="envelope-wrap" id="intro" role="dialog" aria-modal="true" aria-label="Mở thiệp chúc mừng 20 tháng 10">
   <button class="envelope" id="envelope" type="button" aria-label="Mở phong bì và xem thiệp"><span class="peek" id="peek" aria-hidden="true"></span>
-    <div class="env-back"></div>
-    <div class="env-paper">
-      <div class="tiny">gửi cậu</div>
-      <div class="env-title">happyy 20·10</div>
-      <div class="env-sub">❤️❤️❤️</div>
-    </div>
-    <div class="env-flap"></div><div class="env-front"></div>
-    <div class="seal">♡</div>
+    <span class="env-back"></span>
+    <span class="env-paper">
+      <span class="tiny">gửi cậu</span>
+      <span class="env-title">happyy 20·10</span>
+      <span class="env-sub">❤️❤️❤️</span>
+    </span>
+    <span class="env-flap"></span><span class="env-front"></span>
+    <span class="seal">♡</span>
   </button>
   <div class="intro-copy"><strong>"em rời xa anh là bão tố"😆</strong>chạm nhẹ để mở nhen =))</div>
 </div>
 
 <main class="page">
   <div class="topline"><span>✦ <i class="it">a small gift</i></span><span class="sparkle">♡ 20 · 10</span></div>
-  <article class="card" id="card">
+  <article class="card" id="card" tabindex="-1">
     <span class="corner tl" aria-hidden="true">❀</span><span class="corner tr" aria-hidden="true">✧</span>
     <span class="corner bl" aria-hidden="true">✧</span><span class="corner br" aria-hidden="true">❀</span>
     <div class="flower" aria-hidden="true">🌷 🌸 🌷</div>
@@ -224,20 +227,20 @@
     <h1>Chúc mừng<span>Ngày Phụ nữ Việt Nam</span></h1>
     <div class="date">20 <span>·</span> 10 <span>·</span> YÊU THƯƠNG</div>
     <div class="divider" aria-hidden="true">✦</div>
-    <p class="message" id="mainMessage">
-      Nhân ngày Phụ nữ Việt Nam 20/10, tớ xin gửi đến tất cả những bạn nữ của trường Cẩm những lời chúc tốt đẹp nhất!
+    <p class="message">
+      Nhân ngày Phụ nữ Việt Nam 20/10, tớ xin gửi đến tất cả những bạn nữ của trường Cẩm những lời chúc tốt đẹp nhất!<br>
 Chúc cậu luôn <strong>xinh tươi, mạnh khỏe, hạnh phúc</strong>, gặp thật nhiều may mắn và luôn được yêu thương, trân trọng. Mong rằng mỗi ngày trôi qua, cậu đều có thật nhiều niềm vui, luôn nở nụ cười trên môi và đón nhận những điều dịu dàng, ấm áp nhất. 🌷
     </p>
     <div class="btn-row">
       <button class="btn primary" type="button" id="wishBtn" aria-expanded="false" aria-controls="extra">💌 Nhận lời chúc</button>
     </div>
 
-    <section id="extra" aria-hidden="true">
+    <section id="extra">
       <div class="extra-inner">
-        <div class="extra-content" id="extraContent" aria-live="polite">
+        <div class="extra-content" aria-live="polite">
           <div class="mini-flower" aria-hidden="true">🌹 ✨ 🌹</div>
           <div class="catbox" id="catbox" role="button" tabindex="-1" aria-live="off"></div>
-          Chúc cho những cô gái của trường Cẩm luôn tự tin tỏa sáng, sống hết mình với tuổi trẻ và có thật nhiều kỷ niệm đẹp dưới mái trường thân yêu. Mong mọi điều tốt lành sẽ luôn tìm đến cậu, không chỉ trong ngày 20/10 mà còn trong tất cả những ngày sau này. 🫶🏻
+          Chúc cho những cô gái của trường Cẩm luôn tự tin tỏa sáng, sống hết mình với tuổi trẻ và có thật nhiều kỷ niệm đẹp dưới mái trường thân yêu. Mong mọi điều tốt lành sẽ luôn tìm đến cậu, không chỉ trong ngày 20/10 mà còn trong tất cả những ngày sau này. 🫶🏻<br>
 Happy Vietnamese Women’s Day! Chúc một nửa xinh đẹp của trường Cẩm có một ngày 20/10 thật trọn vẹn và đáng nhớ nhé! 💐💕
         </div>
       </div>
@@ -258,11 +261,13 @@ Happy Vietnamese Women’s Day! Chúc một nửa xinh đẹp của trường C�
 (function(){
   "use strict";
   const $ = id => document.getElementById(id);
-  const intro = $("intro"), envelope = $("envelope"), page = document.querySelector(".page");
+  const intro = $("intro"), envelope = $("envelope"), page = document.querySelector(".page"), card = $("card");
   const wishBtn = $("wishBtn"), extra = $("extra"), shareBtn = $("shareBtn"), toast = $("toast");
   const bgm = $("bgm");
   let opened = false, revealed = false, openedAt = 0, revealTimer = null, petalTimer = null, toastTimer = null, musicStarted = false;
   page.setAttribute("inert","");
+  extra.setAttribute("aria-hidden","true");
+  const wishLabel = wishBtn.textContent;
 
   function showToast(message){
     toast.textContent = message;
@@ -304,16 +309,16 @@ Happy Vietnamese Women’s Day! Chúc một nửa xinh đẹp của trường C�
     if(revealed)return;revealed=true;clearTimeout(revealTimer);
     intro.classList.add("dismissed");
     page.removeAttribute("inert");
+    card.focus({preventScroll:true});
     page.classList.add("revealed");
     startPetals();
     setTimeout(confettiBurst,850);
     setTimeout(()=>intro.setAttribute("aria-hidden","true"),1200);
   }
   function openCard(){
-    if(opened){if(Date.now()-openedAt>1000)reveal();return}   
+    if(opened){if(Date.now()-openedAt>1000)reveal();return}
     opened=true;openedAt=Date.now();
     envelope.classList.add("open");
-    intro.classList.add("opening");
     revealTimer=setTimeout(reveal,4131);
   }
   envelope.addEventListener("click",openCard);
@@ -354,7 +359,7 @@ function catSvg(o){
     heart:`<path transform="translate(174 58)" d="M0 16C-26-2-12-24 0-9 12-24 26-2 0 16z" fill="#ff5c8a" stroke="${D}" stroke-width="2.5" stroke-linejoin="round"/>`,
     bow:`<g transform="translate(138 48)" fill="#ff6fa5" stroke="${D}" stroke-width="2.5" stroke-linejoin="round"><path d="M0 0-17-11v22zM0 0l17-11v22z"/><circle r="5.5" fill="#ff9cc2"/></g>`
   };
-  return `<svg viewBox="0 0 200 180" role="img" aria-label="${o.cap}">`+
+  return `<svg viewBox="0 0 200 180" aria-hidden="true">`+
     `<g fill="#fff" stroke="#fff" stroke-width="22" stroke-linejoin="round"><path d="${ears}"/><ellipse cx="100" cy="94" rx="70" ry="58"/>${paws}</g>`+
     `<g fill="${F}" stroke="${D}" stroke-width="3.5" stroke-linejoin="round"><path d="${ears}"/><path d="M48 58 45 33l23 14zM152 58l3-25-23 14z" fill="#ff9db8" stroke="none"/><ellipse cx="100" cy="94" rx="70" ry="58"/></g>`+
     `<ellipse cx="52" cy="108" rx="11" ry="7" fill="#ff7fa8" opacity=".5"/><ellipse cx="148" cy="108" rx="11" ry="7" fill="#ff7fa8" opacity=".5"/>`+
@@ -366,7 +371,7 @@ function catSvg(o){
   const catbox=$("catbox");let ci=0;
   function showCat(n){
     ci=(n+CATS.length)%CATS.length;const o=CATS[ci];
-    catbox.innerHTML='<div class="catwrap">'+(o.src?'<img src="'+o.src+'" alt="'+o.cap+'" loading="lazy">':catSvg(o))+'<div class="catcap">'+o.cap+'</div></div><div class="cathint">chạm vào mèo để xem con khác 🐾</div>';
+    catbox.innerHTML='<div class="catwrap">'+catSvg(o)+'<div class="catcap">'+o.cap+'</div></div><div class="cathint">chạm vào mèo để xem con khác 🐾</div>';
   }
   catbox.addEventListener("click",()=>showCat(ci+1));
   catbox.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();showCat(ci+1)}});
@@ -375,7 +380,7 @@ function catSvg(o){
     const isOpen=extra.classList.toggle("is-open");
     wishBtn.setAttribute("aria-expanded",String(isOpen));
     extra.setAttribute("aria-hidden",String(!isOpen));
-    wishBtn.textContent=isOpen?"💗 Thu lại":"💌 Nhận quà";
+    wishBtn.textContent=isOpen?"💗 Thu lại":wishLabel;
     catbox.tabIndex=isOpen?0:-1;
     if(isOpen){showCat(ci);confettiBurst();}
   });
